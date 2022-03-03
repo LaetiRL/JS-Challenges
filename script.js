@@ -1,36 +1,32 @@
 'use strict';
 
-let dRes = [96, 108, 89];
-let kRes = [88, 91, 110];
+let dRes = [44, 23, 71];
+let kRes = [65, 54, 49];
 
-dRes = [97, 112, 101];
-kRes = [109, 95, 123];
+dRes = [85, 54, 41];
+kRes = [23, 34, 27];
 
-dRes = [97, 112, 101];
-kRes = [109, 95, 106];
 
-const dSum = dRes.reduce(function(a, b) {
-    return a + b;
-}, 0);
-const kSum = kRes.reduce(function(a, b) {
-    return a + b;
-}, 0);
 
-const dAverage = Math.round(dSum / 3);
-const kAverage = Math.round(kSum / 3);
-console.log(dAverage, kAverage);
+const calcAverage = array => {
+    let sum = array[0] + array[1] + array[2];
+    let res = Math.round(sum / 3);
+    return res;
+};
 
-if (dAverage > 100 || kAverage > 100) {
-    if (dAverage > kAverage) {
-        console.log("Les Dauphins gagnent!");
+console.log(calcAverage(dRes));
+console.log(calcAverage(kRes));
+
+
+function checkWinner (dauphin, koala) {
+
+    if (dauphin > koala) {
+        console.log(`L’équipe Dauphin gagne! (${dauphin} vs ${koala}).`);
     } 
-    else if (dAverage === kAverage) {
-        console.log("Égalité");
-    } 
-    else {
-        console.log("Les Koalas gagnent!");
+    else if (dauphin < koala) {
+       console.log(`L’équipe Koala gagne! (${koala} vs ${dauphin}).`);
     }
-} 
-else {
-    console.log("Pas de gagnant");
+
 }
+
+checkWinner(calcAverage(dRes), calcAverage(kRes));
