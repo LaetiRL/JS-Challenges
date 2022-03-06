@@ -1,19 +1,30 @@
 'use strict';
 
-let price = 275;
-price = 40;
-//price = 430;
+function calcTip(price) {
 
-if (price >= 50 && price <= 300) {
-    let tip = (15 * price) / 100;
-    console.log("La note était de ",price,", le pourboire de ",tip," et la valeur totale était de ", price + tip)
-} else {
-    let tip = (20 * price) / 100;
-    console.log("La note était de ",price,", le pourboire de ",tip," et la valeur totale était de ", price + tip)
+    let tip = 0;
+    if (price >= 50 && price <= 300) {
+        tip = (15 * price) / 100;
+    } else {
+        tip = (20 * price) / 100;
+    }
+    return tip;
 }
 
-let tip;
+//console.log(calcTip(100));
 
-price >= 50 && price <= 300 ? tip = (15 * price) / 100 : tip = (20 * price) / 100;
+const bills = [125, 555, 44];
+let tips = [];
+let totals = [];
 
-console.log("La note était de ",price,", le pourboire de ",tip," et la valeur totale était de ", price + tip);
+bills.forEach(element => {
+    let res = calcTip(element);
+    tips.push(res);
+});
+
+for(let i = 0; i < bills.length; i++){
+    totals.push(bills[i] + tips[i]);
+}
+
+console.log(tips);
+console.log(totals);
